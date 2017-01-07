@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="功能列表"
+        android:id="@+id/btn1"
+        android:layout_marginTop="68dp"
+        android:allowUndo="true"
+        android:contextClickable="false"
+        android:fontFamily="@string/abc_searchview_description_search"
+        android:textSize="64dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="任務清單"
+        android:id="@+id/btn2"
+        android:layout_marginTop="36dp"
+        android:textSize="64dp"
+        android:allowUndo="true"
+        android:layout_below="@+id/btn3"
+        android:layout_alignLeft="@+id/btn3"
+        android:layout_alignStart="@+id/btn3" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="感應磁釦"
+        android:id="@+id/btn3"
+        android:allowUndo="true"
+        android:contextClickable="false"
+        android:textSize="64dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

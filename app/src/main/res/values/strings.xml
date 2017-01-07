@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">華新麗華</string>
+    <string name="btn01">抓資料</string>
+    <string name="txvw01">ID</string>
+    <string name="txvw02">Account</string>
+    <string name="txvw03">Password</string>
+    <string name="btn_next">下一頁→</string>
+
+    <string name="btn02">新增資料</string>
+    <string name="txvw04">Account：</string>
+    <string name="txvw05">密碼：</string>
+    <string name="btn_previous">←上一頁</string>
+</resources>
