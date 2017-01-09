@@ -10,20 +10,27 @@ import android.nfc.NfcManager;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.Settings;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
 
-public class ReadActivity extends AppCompatActivity {
+public class checkTaskActivity extends AppCompatActivity {
+
     NfcAdapter mAdapter;
     PendingIntent mPendingIntent;
     IntentFilter[] mFilters;
     Context context;
     TextView mNfcContent;
-
+    String activityNo,status,manuNo,nextNo;
+    RequestQueue requestQueue;
+    String url = "http://140.135.112.8/CollectionSystem/app/updateStatus.php";
     boolean passByOnNewIntent = false;
     boolean enabledNFC = false;
+
 
     private boolean isEnabledNFC()
     {
@@ -32,7 +39,7 @@ public class ReadActivity extends AppCompatActivity {
 
         if(adapter != null && adapter.isEnabled())
         {
-            Toast.makeText(context, "NFC已經開啟！", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "NFC已經開啟！", Toast.LENGTH_SHORT).show();
             return true;
         }
         else
@@ -46,9 +53,14 @@ public class ReadActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_read);
+        setContentView(R.layout.activity_check_task);
         context = this;
-
+        Bundle bundle = getIntent().getExtras();
+        activityNo = bundle.getString("activityNo");
+        status = bundle.getString("status");
+        manuNo = bundle.getString("manuNo");
+        nextNo = bundle.getString("nextNo");
+        Log.d("activityNo",activityNo);
         //1.建立NFC Adapter
         mAdapter = NfcAdapter.getDefaultAdapter(this);
 
@@ -143,22 +155,45 @@ public class ReadActivity extends AppCompatActivity {
             }
             byte[] payload = msgs[0].getRecords()[0].getPayload();
             String value = new String(payload);
-            Toast.makeText(this, "OK", Toast.LENGTH_SHORT).show();
-            Intent intent2= new Intent();
-            intent.setClass(ReadActivity.this,ViewManuActivity.class);
-            //new一個intent物件，並指定Activity切換的class
-            // new一個Bundle物件，並將要傳遞的資料傳入
-            Bundle bundle = new Bundle();
-            bundle.putString("value",value);//傳遞Double
-
-            //將Bundle物件傳給intent
-            intent.putExtras(bundle);
-            //切換Activity
-            startActivity(intent);
-
             //顯示NFC內容
-            mNfcContent.setText(value);
-            Toast.makeText(this, value, Toast.LENGTH_SHORT).show();
+            mNfcContent.setText(value+""+activityNo );
+            //Toast.makeText(this, value, Toast.LENGTH_SHORT).show();
+            if(value.equals(manuNo)) {
+                Toast.makeText(this, "讀取成功", Toast.LENGTH_LONG).show();
+                Intent intent2 = new Intent();
+                intent.setClass(checkTaskActivity.this, updateStatusActivity.class);
+                //new一個intent物件，並指定Activity切換的class
+                // new一個Bundle物件，並將要傳遞的資料傳入
+                Bundle bundle = new Bundle();
+                bundle.putString("activityNo", activityNo);//傳遞Double
+                bundle.putString("status", status);//傳遞Double
+                bundle.putString("nextNo", nextNo);//傳遞Double
+                bundle.putString("manuNo", manuNo);//傳遞Double
+                //將Bundle物件傳給intent
+                intent.putExtras(bundle);
+                //切換Activity
+                startActivity(intent);
+
+                finish();
+
+
+
+
+
+            }else{
+                new AlertDialog.Builder(checkTaskActivity.this)
+                        .setTitle("華新麗華員工系統")
+                        .setMessage("料件錯誤")
+                        .setPositiveButton("ok", null)
+                        .show();
+            }
+
+
+
         }
-    }
+
+
+
+        }
 }
+

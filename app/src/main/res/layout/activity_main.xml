@@ -9,9 +9,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="功能列表"
+        android:text="成品原料"
         android:id="@+id/btn1"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="50dp"
         android:allowUndo="true"
         android:contextClickable="false"
         android:fontFamily="@string/abc_searchview_description_search"
@@ -24,21 +24,22 @@
         android:layout_height="wrap_content"
         android:text="任務清單"
         android:id="@+id/btn2"
-        android:layout_marginTop="36dp"
         android:textSize="64dp"
         android:allowUndo="true"
         android:layout_below="@+id/btn3"
         android:layout_alignLeft="@+id/btn3"
-        android:layout_alignStart="@+id/btn3" />
+        android:layout_alignStart="@+id/btn3"
+        android:layout_marginTop="40dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="感應磁釦"
+        android:text="RFID功能"
         android:id="@+id/btn3"
         android:allowUndo="true"
         android:contextClickable="false"
         android:textSize="64dp"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/btn1"
+        android:layout_alignStart="@+id/btn1" />
 </RelativeLayout>

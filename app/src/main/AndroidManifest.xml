@@ -3,7 +3,6 @@
     package="my.inclassi.testmysql">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.NFC" />
 
     <application
@@ -28,7 +27,13 @@
         <activity android:name=".showRawSearchActivity" />
         <activity android:name=".NFCActivity" />
         <activity android:name=".ReadActivity" />
-        <activity android:name=".WriteActivity"></activity>
+        <activity android:name=".WriteActivity" />
+        <activity android:name=".showTaskActivity" />
+        <activity android:name=".checkTaskActivity" />
+        <activity android:name=".updateStatusActivity" />
+        <activity android:name=".ViewManuActivity" />
+        <activity android:name=".BindingRFIDActivity" />
+        <activity android:name=".RFID"></activity>
     </application>
 
 </manifest>

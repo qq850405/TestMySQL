@@ -11,11 +11,20 @@ android:paddingTop="@dimen/activity_vertical_margin"
 tools:context="my.inclassi.testmysql.ReadActivity">
 
 <TextView
-    android:text="read"
+    android:text="請感應RFID"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:id="@+id/textView_show"
     android:layout_alignParentTop="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:id="@+id/textView_show" />
+    android:layout_centerHorizontal="true"
+    android:textSize="56dp" />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/rfid"
+        android:layout_below="@+id/textView_show" />
 </RelativeLayout>

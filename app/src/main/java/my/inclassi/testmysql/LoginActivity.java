@@ -14,7 +14,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -89,16 +88,16 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-                                if(!logon){
-                                    new AlertDialog.Builder(LoginActivity.this)
-                                            .setTitle("華新麗華員工系統")
-                                            .setMessage("登入失敗")
-                                            .setPositiveButton("ok",null)
-                                            .show();
-                                }
+
                             }
 
-
+                            if(!logon){
+                                new AlertDialog.Builder(LoginActivity.this)
+                                        .setTitle("華新麗華員工系統")
+                                        .setMessage("登入失敗")
+                                        .setPositiveButton("ok",null)
+                                        .show();
+                            }
 
                         }
                         catch(JSONException e)
