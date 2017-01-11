@@ -33,7 +33,7 @@
         <activity android:name=".updateStatusActivity" />
         <activity android:name=".ViewManuActivity" />
         <activity android:name=".BindingRFIDActivity" />
-        <activity android:name=".RFID"></activity>
+        <activity android:name=".RFID" />
     </application>
 
 </manifest>

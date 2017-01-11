@@ -1,5 +1,6 @@
 package my.inclassi.testmysql;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -19,7 +20,7 @@ public class updateStatusActivity extends AppCompatActivity {
     RequestQueue requestQueue;
     String url ;
 
-    String activityNo,status,nextNo;
+    String activityNo,status,nextNo,manuNo;
 
 
     @Override
@@ -33,6 +34,7 @@ public class updateStatusActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         activityNo = bundle.getString("activityNo");
         status = bundle.getString("status");
+        manuNo = bundle.getString("manuNo");
         nextNo = bundle.getString("nextNo");
         Log.d("activityNo",activityNo);
         Log.d("00status",status);
@@ -96,8 +98,17 @@ public class updateStatusActivity extends AppCompatActivity {
                 }
             };
             requestQueue.add(stringRequest);
-
+                
         }
+
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "123");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "你好"+"\n製令編號:"+manuNo+"\n請查看任務清單，有問題回電，謝謝");
+            startActivity(Intent.createChooser(sharingIntent, "1234"));
+
+
+
 
         finish();
 
