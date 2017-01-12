@@ -9,7 +9,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="成品原料"
+        android:text="成品庫存"
         android:id="@+id/btn1"
         android:layout_marginTop="50dp"
         android:allowUndo="true"
@@ -34,7 +34,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RFID功能"
+        android:text="RFID感應"
         android:id="@+id/btn3"
         android:allowUndo="true"
         android:contextClickable="false"
@@ -42,4 +42,5 @@
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/btn1"
         android:layout_alignStart="@+id/btn1" />
+
 </RelativeLayout>

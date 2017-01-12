@@ -34,6 +34,7 @@
         <activity android:name=".ViewManuActivity" />
         <activity android:name=".BindingRFIDActivity" />
         <activity android:name=".RFID" />
+        <activity android:name=".ViewFinishedStoreActivity"></activity>
     </application>
 
 </manifest>

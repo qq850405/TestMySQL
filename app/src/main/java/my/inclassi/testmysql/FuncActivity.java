@@ -22,7 +22,7 @@ public class FuncActivity extends AppCompatActivity {
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentToInsertPage = new Intent().setClass(getApplicationContext(), SearchActivity.class);
+                Intent intentToInsertPage = new Intent().setClass(getApplicationContext(), ViewFinishedStoreActivity.class);
                 startActivity(intentToInsertPage);
 
             }
