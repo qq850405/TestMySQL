@@ -80,7 +80,9 @@ public class updateStatusActivity extends AppCompatActivity {
             };
             requestQueue.add(stringRequest);
             requestQueue = Volley.newRequestQueue(getApplicationContext());
-        if(nextNo.equals("end")&&status.equals("in progress")){
+
+
+        if(!nextNo.equals("end")&&status.equals("in progress")){
             url = "http://140.135.112.8/CollectionSystem/app/updateReadyStatus.php";
 
 
@@ -107,6 +109,79 @@ public class updateStatusActivity extends AppCompatActivity {
             };
             requestQueue.add(stringRequest);
                 
+        }
+        if(!nextNo.equals("end")&& status.equals("ready")){
+            final String[] flag_new = {""};
+            flag="";
+            Log.d("",flag+"有進來");
+            url = "http://140.135.112.8/CollectionSystem/app/finishedStoreSearch.php";
+
+            //生成RequestQueue物件
+            requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+            //註冊btn的監聽器
+
+
+            //宣告並生成JsonObjectRequest物件
+            //透過JsonObjectRequest來取得PHP傳遞過來的JSONArray
+            //Constructor(int method, String url, JSONObject jsonRequest, Listener<JSONObject> listener, ErrorListener errorListener)
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
+
+                //處理JSONArray
+                @Override
+                public void onResponse(JSONObject response) {
+                    System.out.println(response.toString());
+
+                    //使用Try Catch是因為getJSONArray有可能抓不到值
+                    try
+                    {
+                        //透過response.getJSONArray()取得JSONArray
+                        JSONArray data = response.getJSONArray("data");
+
+                        boolean logon= false;
+
+                        //利用迴圈取得data[]內的資料
+                        for(int i=0; i<data.length(); i++)
+                        {
+                            //取得data[]內的JSONObject
+                            JSONObject jasonData = data.getJSONObject(i);
+                            //取得jasonData內的資料
+                            String finishedStoreNo = jasonData.getString("finishedStoreNo");
+                            String space = jasonData.getString("space");
+                            String manuNo = jasonData.getString("manuNo");
+
+                            if(manuNo.equals("No thing")) {
+
+                                flag=space;
+                                Log.d("",flag+"有進來2");
+                                break;
+
+                            }
+                        }
+
+                    }
+                    catch(JSONException e)
+                    {
+                        //錯誤處理
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    System.out.append(error.getMessage());
+                }
+            });
+
+            //最後一定將JsonObjectRequest物件加入至requestQueue內
+            //這樣才能Work
+
+            requestQueue.add(jsonObjectRequest);
+
+            Log.d("", flag_new[0] +"有進來4");
+
+
         }
 
         if(nextNo.equals("end")&& status.equals("ready")){
